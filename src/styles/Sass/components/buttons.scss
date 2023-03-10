@@ -1,0 +1,116 @@
+.btn {
+  border: none;
+  cursor: pointer;
+}
+
+// COLORS
+$colors: (
+  "white":#ffffff,
+  "red":crimson,
+  "blue":#007FFF,
+  "purple":rebeccapurple,
+  "green":#32de84,
+  "yellow":#FFD700,
+  "grey":grey,
+  "black":black,
+  "lime":lime,
+  "skyblue":#55c2da,
+  "violet":#d57be6,
+  "pink":#dd7973
+);
+
+
+$gradients: (
+  "red":"#89216B, #DA4453",
+  "blue":"#00b4db, #0083b0",
+  "purple":"#ad5389, #3c1053",
+  "pink":"#bc4e9c, #f80759",
+  "green":"#11998e, #38ef7d",
+  "sublime":"#fc5c7d, #6a82fb",
+  "rainbow":"#00f260, #0575e6",
+  "purplepink":"#7f00ff, #e100ff",
+  "lightblue":"#a8c0ff, #3f2b96",
+  "darkblue":"#0f0c29, #302b63",
+  "lightpurple":"#4e54c8, #8f94fb",
+);
+
+// BACKGROUND and COLORS
+@each $color,
+$bgColor in $colors {
+  .btn-#{$color} {
+    background-color: $bgColor;
+  }
+}
+@each $color,
+$bgColor in $colors {
+  .text-#{$color} {
+    color: $bgColor
+  }
+}
+
+@each $suffix,$color in $gradients{
+  .gradient-#{$suffix}{
+    background: linear-gradient(to right, unquote($color));
+  }
+}
+
+// OUTLINE
+@each $color,
+$outlineColor in $colors {
+  .btn-outline-#{$color} {
+    outline: 1px solid $outlineColor;
+    outline-offset: 4px;
+  }
+}
+
+//BORDER
+@each $color,
+$bgColor in $colors {
+  .btn-border-#{$color} {
+    border: 1px solid $bgColor;
+    color: $bgColor;
+    background-color: transparent;
+  }
+}
+
+
+// BORDER RADIUS
+$borderRadius:0,1,2,3,4,5,6,7,8,9,10,15,20,25,30,40,50,100;
+
+@each $bRadius in $borderRadius{
+  .border-radius-#{$bRadius} {
+    border-radius: $bRadius + px;
+  }
+}
+.border-radius-full{
+  border-radius:50%;
+}
+
+
+// SIZES
+$btnSizes: (
+  sm:100px,
+  md:150px,
+  lg:250px,
+  xl:400px
+);
+
+@each $suffix,
+$size in $btnSizes {
+  .btn-#{$suffix} {
+    min-width: $size;
+    max-width: $size;
+  }
+}
+
+@media screen and (max-width:500px) {
+  $btnSizes: (sm:100px, md:120px, lg:150px, xl:200px);
+
+  @each $suffix,
+  $size in $btnSizes {
+    .btn-#{$suffix} {
+      min-width: $size;
+      max-width: $size;
+    }
+  }
+}

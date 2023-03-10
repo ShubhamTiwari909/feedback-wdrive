@@ -1,0 +1,119 @@
+$theme: #ffffff;
+$textColor: #000000;
+$maxWidth: 800px;
+
+.accordion__wrapper {
+  padding: .5rem 1rem;
+
+  .accordion {
+    background-color: $theme;
+    margin-bottom: 1rem;
+    max-width: $maxWidth;
+    border: 1px solid grey;
+    overflow: hidden;
+    padding: .7rem 1.5rem;
+    border-radius: 10px;
+
+    &__header {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__title {
+      color: $textColor;
+      font-size: 1.5rem;
+    }
+
+    &__btn {
+      color: $textColor;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      font-size: 1.5rem;
+    }
+
+    &__text {
+      color: $textColor;
+      word-break: break;
+      margin-top: 0;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s linear;
+    }
+  }
+
+  .h-full {
+    max-height: fit-content;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 1rem;
+  }
+  .text-shadow{
+    text-shadow: 1px 1px 2px rgba(0,0,0,1);
+  }
+
+  //  THEMES
+
+  $themes: (
+    "dark":#000000,
+    "red":crimson,
+    "orange":rgb(223, 155, 77),
+    "blue":#007FFF,
+    "purple":rebeccapurple,
+    "green":hsl(149, 80%, 50%),
+    "yellow":rgb(201, 201, 28),
+    "grey":grey,
+    "lime":rgb(5, 203, 5),
+    "skyblue":#55c2da,
+    "violet":#d57be6,
+    "pink":#dd7973
+  );
+
+@each $prefix,
+$color in $themes {
+  .#{$prefix}-mode {
+    $theme: $color;
+    background-color: $color;
+    $textColor: #ffffff;
+
+    .accordion {
+
+      &__title,
+      &__btn,
+      &__text {
+        color: $textColor;
+      }
+    }
+  }
+}
+
+
+// THEMES END
+
+
+// WIDTHS
+.accordion--md {
+  $maxWidth: 350px;
+  max-width: $maxWidth;
+
+  .accordion {
+    &__title {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.accordion--sm {
+  $maxWidth: 250px;
+  max-width: $maxWidth;
+
+  .accordion {
+    &__title {
+      font-size: 1.2rem;
+    }
+  }
+}
+}
